@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HalalData Ghana</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f8f5;
+  color: #183b29;
+}
+
+header {
+  background: #087d43;
+  color: white;
+  padding: 22px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+header p {
+  margin-top: 7px;
+  font-size: 13px;
+}
+
+.container {
+  max-width: 650px;
+  margin: 25px auto;
+  padding: 15px;
+}
+
+.welcome {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 3px 12px #ddd;
+}
+
+.welcome h2 {
+  color: #087d43;
+  margin-bottom: 10px;
+}
+
+h3 {
+  margin: 25px 0 15px;
+}
+
+.networks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.network {
+  background: white;
+  padding: 20px 5px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #ddd;
+}
+
+.network button {
+  margin-top: 10px;
+  background: #087d43;
+  color: white;
+  border: none;
+  padding: 9px;
+  border-radius: 7px;
+}
+
+.form {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+input, select {
+  width: 100%;
+  padding: 13px;
+  margin: 9px 0;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+}
+
+.buy {
+  width: 100%;
+  padding: 14px;
+  background: #087d43;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.notice {
+  font-size: 12px;
+  color: #666;
+  margin-top: 15px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #666;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">📶 HalalData</div>
+  <p>Buy Data. Save Money. Stay Connected.</p>
+</header>
+
+<div class="container">
+
+  <section class="welcome">
+    <h2>Welcome to HalalData!</h2>
+    <p>Your Ghanaian data bundle platform.</p>
+    <p>Fast, simple and convenient.</p>
+  </section>
+
+  <h3>Select Your Network</h3>
+
+  <div class="networks">
+    <div class="network">
+      MTN Ghana
+      <button onclick="choose('MTN')">Select</button>
+    </div>
+
+    <div class="network">
+      Telecel
+      <button onclick="choose('Telecel')">Select</button>
+    </div>
+
+    <div class="network">
+      AT Ghana
+      <button onclick="choose('AT')">Select</button>
+    </div>
+  </div>
+
+  <section class="form">
+    <h3 style="margin-top:0">Buy Data</h3>
+
+    <label>Network</label>
+    <select id="network">
+      <option value="">Choose network</option>
+      <option>MTN</option>
+      <option>Telecel</option>
+      <option>AT</option>
+    </select>
+
+    <label>Phone Number</label>
+    <input id="phone" type="tel" placeholder="Enter Ghanaian number">
+
+    <label>Data Bundle</label>
+    <select id="bundle">
+      <option value="">Select bundle</option>
+      <option>1GB</option>
+      <option>2GB</option>
+      <option>5GB</option>
+      <option>10GB</option>
+    </select>
+
+    <button class="buy" onclick="placeOrder()">
+      Continue
+    </button>
+
+    <p class="notice">
+      Demonstration only. Real payments and data delivery
+      are not yet connected.
+    </p>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 HalalData Ghana. All rights reserved.
+</footer>
+
+<script>
+function choose(network) {
+  document.getElementById("network").value = network;
+  document.querySelector(".form").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function placeOrder() {
+  const network = document.getElementById("network").value;
+  const phone = document.getElementById("phone").value;
+  const bundle = document.getElementById("bundle").value;
+
+  if (!network || !phone || !bundle) {
+    alert("Please complete all the fields.");
+    return;
+  }
+
+  if (!/^(0\d{9}|\+233\d{9})$/.test(phone)) {
+    alert("Please enter a valid Ghanaian phone number.");
+    return;
+  }
+
+  alert("Welcome to HalalData! This is a demonstration. Real purchases are not yet available.");
+}
+</script>
+
+</body>
+</html>
